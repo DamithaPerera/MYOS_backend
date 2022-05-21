@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import {
-    createProductService, editProductService,
+    createProductService, editProductService, getAllProductService,
 
 } from './products.service'
 import {commonResponse} from '../../util/response'
@@ -20,7 +20,7 @@ const createProductsController = async (req: Request, res: Response): Promise<vo
     } catch (error) {
         console.log('createProductsController Error', error);
         response = commonResponse(
-            true,
+            false,
             null,
             'product creation failed',
             error
@@ -44,7 +44,7 @@ const editProductsController = async (req: Request, res: Response): Promise<void
     } catch (error) {
         console.log('editProductsController Error', error);
         response = commonResponse(
-            true,
+            false,
             null,
             'product update failed',
             error
@@ -53,7 +53,32 @@ const editProductsController = async (req: Request, res: Response): Promise<void
     }
 };
 
+const getAllProductsController = async (req: Request, res: Response): Promise<void> => {
+
+    try {
+        const {offset, limit, byTitle, byDescription} = req.query;
+        const data = await getAllProductService(offset, limit, byTitle, byDescription)
+        response = commonResponse(
+            true,
+            data,
+            'get all products',
+            null
+        );
+        res.status(201).send(response);
+    } catch (error) {
+        console.log('getAllProductsController Error', error);
+        response = commonResponse(
+            false,
+            null,
+            'get all products failed',
+            error
+        );
+        res.status(400).send(response);
+    }
+};
+
 export {
     createProductsController,
-    editProductsController
+    editProductsController,
+    getAllProductsController
 }

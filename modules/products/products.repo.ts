@@ -25,9 +25,17 @@ const updateProductsWithPictureRepo = async (data: object, id: string) => {
     return connection.promise().query(query, values)
 };
 
+const getAllProductsRepo = async (offset: number, limit: number, byTitle: string, byDescription: string) => {
+    console.log('createTaskRepo')
+    const query: string = `SELECT title, description, picture FROM products WHERE( title LIKE '%${byTitle}%' OR description LIKE '%${byDescription}%' ) 
+                           AND deleted = false LIMIT ${limit} OFFSET ${offset}`;
+    const data = await connection.promise().query(query)
+    return data[0]
+};
 
 export {
     createProductsRepo,
     updateProductsRepo,
-    updateProductsWithPictureRepo
+    updateProductsWithPictureRepo,
+    getAllProductsRepo
 };

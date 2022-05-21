@@ -1,5 +1,10 @@
 // @ts-nocheck
-import {createProductsRepo, updateProductsRepo, updateProductsWithPictureRepo} from './products.repo';
+import {
+    createProductsRepo,
+    getAllProductsRepo,
+    updateProductsRepo,
+    updateProductsWithPictureRepo
+} from './products.repo';
 import coolImages from 'cool-images';
 
 
@@ -18,8 +23,14 @@ const editProductService = async (data: object, productId: string) => {
     return updateProductsRepo(data, productId)
 };
 
+const getAllProductService = async (offset, limit, byTitle, byDescription) => {
+    console.log('getAllProductService');
+    return getAllProductsRepo(offset, limit, byTitle, byDescription)
+};
+
 
 export {
     createProductService,
-    editProductService
+    editProductService,
+    getAllProductService
 };
