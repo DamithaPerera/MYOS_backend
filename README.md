@@ -3,7 +3,7 @@
 1. Clone the project
 2. Change the database credentials in `database/db.js` file.
 3. Run `npm install`
-4. Run `npm run buil`
+4. Run `npm run build`
 5. To start the server run `npm start`
 
 ###Project Requirements
