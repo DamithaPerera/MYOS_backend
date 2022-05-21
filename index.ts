@@ -1,9 +1,14 @@
 import express, {Express} from 'express';
 import cookieParser from 'cookie-parser';
+import connection from './database/db'
+import createTables from './models/createTables';
+
 
 const app: Express = express();
-const port = 3000;
+const port = 3001;
+connection.promise()
 
+createTables()
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
