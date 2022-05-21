@@ -7,6 +7,11 @@ import {
 } from './products.service'
 import {commonResponse} from '../../util/response'
 
+/**
+ * createProductsController
+ * @param req
+ * @param res
+ */
 let response;
 const createProductsController = async (req: Request, res: Response): Promise<void> => {
 
@@ -31,6 +36,12 @@ const createProductsController = async (req: Request, res: Response): Promise<vo
     }
 };
 
+
+/**
+ * editProductsController
+ * @param req
+ * @param res
+ */
 const editProductsController = async (req: Request, res: Response): Promise<void> => {
 
     try {
@@ -55,6 +66,11 @@ const editProductsController = async (req: Request, res: Response): Promise<void
     }
 };
 
+/**
+ * getAllProductsController
+ * @param req
+ * @param res
+ */
 const getAllProductsController = async (req: Request, res: Response): Promise<void> => {
 
     try {
@@ -79,6 +95,12 @@ const getAllProductsController = async (req: Request, res: Response): Promise<vo
     }
 };
 
+
+/**
+ * deleteProductsController
+ * @param req
+ * @param res
+ */
 const deleteProductsController = async (req: Request, res: Response): Promise<void> => {
 
     try {
