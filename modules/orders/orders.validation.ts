@@ -3,13 +3,13 @@ import {NextFunction, Request, Response} from 'express';
 import {commonResponse} from "../../util/response";
 
 /**
- * orderBody validation
+ * createOrderValidation validation
  * @param req
  * @param res
  * @param next
  */
 let response;
-export const taskBody = (req: Request, res: Response, next: NextFunction) => {
+export const createOrderValidation = (req: Request, res: Response, next: NextFunction) => {
 
     const schema = Joi.object({
         order: Joi.array()
