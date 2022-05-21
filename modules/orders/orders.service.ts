@@ -1,6 +1,10 @@
 import {checkOrderRepo, createOrderRepo, createOrderTableRepo} from "./orders.repo";
 import _ from "lodash";
 
+/**
+ * createOrderService
+ * @param data {Object}
+ */
 const createOrderService = async (data: object) => {
     console.log('CreateProductService');
     // @ts-ignore

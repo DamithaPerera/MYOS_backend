@@ -3,6 +3,11 @@ import {Request, Response} from 'express';
 import {commonResponse} from '../../util/response'
 import {createOrderService} from "./orders.service";
 
+/**
+ * createOrderController
+ * @param req
+ * @param res
+ */
 let response;
 const createOrderController = async (req: Request, res: Response): Promise<void> => {
 
