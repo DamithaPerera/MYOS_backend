@@ -33,9 +33,17 @@ const getAllProductsRepo = async (offset: number, limit: number, byTitle: string
     return data[0]
 };
 
+const deleteProductsRepo = async (id: string) => {
+    console.log('deleteProductsRepo')
+    const values = [true, id];
+    const query: string = 'UPDATE products SET deleted = (?), updated_at = current_timestamp WHERE id = (?)';
+    return connection.promise().query(query, values)
+};
+
 export {
     createProductsRepo,
     updateProductsRepo,
     updateProductsWithPictureRepo,
-    getAllProductsRepo
+    getAllProductsRepo,
+    deleteProductsRepo
 };

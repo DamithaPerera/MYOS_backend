@@ -1,7 +1,9 @@
 import {Request, Response} from 'express';
 import {
-    createProductService, editProductService, getAllProductService,
-
+    createProductService,
+    deleteProductService,
+    editProductService,
+    getAllProductService,
 } from './products.service'
 import {commonResponse} from '../../util/response'
 
@@ -40,7 +42,7 @@ const editProductsController = async (req: Request, res: Response): Promise<void
             'product updated',
             null
         );
-        res.status(201).send(response);
+        res.status(200).send(response);
     } catch (error) {
         console.log('editProductsController Error', error);
         response = commonResponse(
@@ -64,7 +66,7 @@ const getAllProductsController = async (req: Request, res: Response): Promise<vo
             'get all products',
             null
         );
-        res.status(201).send(response);
+        res.status(200).send(response);
     } catch (error) {
         console.log('getAllProductsController Error', error);
         response = commonResponse(
@@ -77,8 +79,33 @@ const getAllProductsController = async (req: Request, res: Response): Promise<vo
     }
 };
 
+const deleteProductsController = async (req: Request, res: Response): Promise<void> => {
+
+    try {
+        const productId = req.params.productId;
+        await deleteProductService(productId)
+        response = commonResponse(
+            true,
+            null,
+            'product deleted successfully',
+            null
+        );
+        res.status(200).send(response);
+    } catch (error) {
+        console.log('getAllProductsController Error', error);
+        response = commonResponse(
+            false,
+            null,
+            'product delete failed',
+            error
+        );
+        res.status(400).send(response);
+    }
+};
+
 export {
     createProductsController,
     editProductsController,
-    getAllProductsController
+    getAllProductsController,
+    deleteProductsController
 }

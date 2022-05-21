@@ -1,6 +1,7 @@
 // @ts-nocheck
 import {
     createProductsRepo,
+    deleteProductsRepo,
     getAllProductsRepo,
     updateProductsRepo,
     updateProductsWithPictureRepo
@@ -28,9 +29,14 @@ const getAllProductService = async (offset, limit, byTitle, byDescription) => {
     return getAllProductsRepo(offset, limit, byTitle, byDescription)
 };
 
+const deleteProductService = async (productId: string) => {
+    console.log('deleteProductService');
+    return deleteProductsRepo(productId)
+};
 
 export {
     createProductService,
     editProductService,
-    getAllProductService
+    getAllProductService,
+    deleteProductService
 };
