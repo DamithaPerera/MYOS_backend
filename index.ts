@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import connection from './database/db'
 import createTables from './models/createTables';
 import productsRoutes from './modules/products/products.router'
+import ordersRoutes from './modules/orders/orders.router'
 import cors from 'cors';
 
 const app: Express = express();
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 
 app.use('/v1/products', productsRoutes)
+app.use('/v1/orders', ordersRoutes)
 
 
 app.listen(port, () => {

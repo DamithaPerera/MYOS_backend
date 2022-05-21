@@ -5,6 +5,7 @@ const createOrderTable = async () => {
       orders(
         id INT PRIMARY KEY AUTO_INCREMENT,
         product_id INT NOT NULL,
+        quantity INT NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP(),
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP(),
         CONSTRAINT FK_product_id FOREIGN KEY(product_id) REFERENCES products(id)

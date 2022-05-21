@@ -1,16 +1,12 @@
-// import {Router} from 'express';
-// import {
-//     createProductsController,
-//     deleteProductsController,
-//     editProductsController,
-//     getAllProductsController
-// } from './products.controller';
-//
-//
-// const routes = Router();
-//
-//
-// routes.post('/', createProductsController);
-//
-//
-// export default routes;
+import {Router} from 'express';
+
+import {createOrderController} from "./orders.controller";
+
+
+const routes = Router();
+
+
+routes.post('/', createOrderController);
+
+
+export default routes;
