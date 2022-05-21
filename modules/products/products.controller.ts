@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import {
-    createProductService,
+    createProductService, editProductService,
 
 } from './products.service'
 import {commonResponse} from '../../util/response'
@@ -29,7 +29,31 @@ const createProductsController = async (req: Request, res: Response): Promise<vo
     }
 };
 
+const editProductsController = async (req: Request, res: Response): Promise<void> => {
+
+    try {
+        const productId = req.params.productId;
+        await editProductService(req.body, productId)
+        response = commonResponse(
+            true,
+            null,
+            'product updated',
+            null
+        );
+        res.status(201).send(response);
+    } catch (error) {
+        console.log('editProductsController Error', error);
+        response = commonResponse(
+            true,
+            null,
+            'product update failed',
+            error
+        );
+        res.status(400).send(response);
+    }
+};
 
 export {
-    createProductsController
+    createProductsController,
+    editProductsController
 }
