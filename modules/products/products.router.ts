@@ -5,14 +5,19 @@ import {
     editProductsController,
     getAllProductsController
 } from './products.controller';
+import {
+    createProductsValidation,
+    getAllProductsValidation,
+    updateProductsValidation
+} from "./products.validation";
 
 
 const routes = Router();
 
 
-routes.post('/', createProductsController);
-routes.put('/:productId', editProductsController);
-routes.get('/', getAllProductsController);
+routes.post('/', createProductsValidation, createProductsController);
+routes.put('/:productId', updateProductsValidation, editProductsController);
+routes.get('/', getAllProductsValidation, getAllProductsController);
 routes.delete('/:productId', deleteProductsController);
 
 

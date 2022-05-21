@@ -17,7 +17,7 @@ const createProductService = async (data: object) => {
 
 const editProductService = async (data: object, productId: string) => {
     console.log('editProductService');
-    if (data.changePitcure) {
+    if (data.changePicture) {
         data.picture = coolImages.one();
         return updateProductsWithPictureRepo(data, productId)
     }
