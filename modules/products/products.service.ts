@@ -2,7 +2,7 @@
 import {
     createProductsRepo,
     deleteProductsRepo,
-    getAllProductsRepo,
+    getAllProductsRepo, getAllWithoutSearchProductsRepo,
     updateProductsRepo,
     updateProductsWithPictureRepo
 } from './products.repo';
@@ -26,7 +26,15 @@ const editProductService = async (data: object, productId: string) => {
 
 const getAllProductService = async (offset, limit, byTitle, byDescription) => {
     console.log('getAllProductService');
-    return getAllProductsRepo(offset, limit, byTitle, byDescription)
+    if (limit === undefined) {
+        limit = 10
+    }
+    if (offset === undefined) {
+        offset = 0
+    }
+    return byTitle === undefined && byDescription === undefined ? getAllWithoutSearchProductsRepo(offset, limit) :
+        getAllProductsRepo(offset, limit, byTitle, byDescription);
+
 };
 
 const deleteProductService = async (productId: string) => {

@@ -62,7 +62,7 @@ const getAllProductsController = async (req: Request, res: Response): Promise<vo
         const data = await getAllProductService(offset, limit, byTitle, byDescription)
         response = commonResponse(
             true,
-            data,
+            data[0],
             'get all products',
             null
         );
